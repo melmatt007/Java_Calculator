@@ -4,87 +4,51 @@ import java.util.Stack;
 import java.util.*;
 import java.io.*;
 
-public class Calculator {
-    public static void main(String[] args) {
-        Stack<String> numbers = new Stack<>();
-        Stack<String> operations = new Stack<>();
-        Stack<String> brackets = new Stack<>();
 
+
+public class Calculator {
+
+    public static Stack<String> numbers = new Stack<>();
+    public static Stack<String> operations = new Stack<>();
+    
+    public static void main(String[] args) {
         double result = Double.parseDouble(args[0]);
+        double output; 
         String operation = "a";
 
-        result = math();
 
+        for (int i = 0; i < args.length; i++) {
+            math(args[i]);
+        }
         System.out.printf("%f%n", result);
 
     }
 
-    public static double math (){
-        for (int i = 0; i < args.length; i++) {
-            if (args[i] == "(") {
-                for (k=1; args[i+k] != ")"; k++){
-                    if (args[i+k] == '('){
-                        math (args[i+k]);
-                    }                    
-                    double val = evaluatebracket(args[i+k], args[i+1]);
-                    value = Double.toString(val);
-                    numbers.push(value);
-                }                
-            }
-    
-            else if (args[i] == "+") {
-                operations.push(args[i]);
-            }
-    
-            else if (args[i] == "-") {
-                operations.push(args[i]);
-            }
-    
-            else if (args[i] == "x") {
-                operations.push(args[i]);
-            }
-    
-            else if (args[i] == "/") {
-                operations.push(args[i]);
-            }
-    
-            else {
-                numbers.push(args[i]);
-            }
+    public static void math(String input) {
+
+        if (input == "+") {
+            operations.push(input);
         }
-    }
 
-    public static double evaluatebracket(String Input, String Initial){
+        else if (input == "-") {
+            operations.push(input);
+        }
 
-        operation = Input;
-        double j;
-        double result = Double.parseDouble(Initial);
+        else if (input == "x") {
+            operations.push(input);
+        }
 
-        switch (operation) {
+        else if (input == "/") {
+            operations.push(input);
+        }
 
-        case "+":
-            j = Double.parseDouble(args[i + 1]);
-            result += j;
-            break;
-            
-        case "-":
-            j = Double.parseDouble(args[i + 1]);
-            result -= j;
-            break;
-
-        case "x":
-            j = Double.parseDouble(args[i + 1]);
-            result *= j;
-            break;
-
-        case "/":
-            j = Double.parseDouble(args[i + 1]);
-            result /= j;
-            break;
-
+        else {
+            numbers.push(input);
         }
 
     }
+
+
 
 }
 
