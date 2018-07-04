@@ -4,8 +4,6 @@ import java.util.Stack;
 import java.util.*;
 import java.io.*;
 
-
-
 public class Calculator {
 
     public static Stack<String> numbers = new Stack<>();
