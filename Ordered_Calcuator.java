@@ -5,19 +5,12 @@ import java.util.*;
 import java.io.*;
 
 public class Ordered_Calculator {
-
-    public static Stack<String> input = new Stack<>();
-    public static Stack<String> brackets = new Stack<>();
-          
+        
     
     public static void main(String[] args) {
         double output = Double.parseDouble(args[0]);
                 
-        for (int i = 0; i < args.length; i++) {
-            input.push(args[i]); 
-        }
-
-        math(input); 
+        math(args); 
 
         output = calculate(args[i], i, args, output);
 
@@ -26,43 +19,53 @@ public class Ordered_Calculator {
                 
     }
 
-    public static void math(Stack input){
-        brackets(input);
-        exponent(input);
-        divide(input);
-        multiply(input);
-        add(input);
-        subtract(input);
+    public static void math(String[] args){
+        brackets(args);
+        String [] exponential = exponent(args);
+        String [] divided = divide(exponential);
+        String [] multiplied = multiply(divided);
+        String [] added = add(multiplied);
+        String [] subtracted = subtract(added);
     }
 
-    public static void brackets(Stack args) {
+    public static void brackets(String[] args) {
         
         for (int i = 0; i < args.length; i++) {
             if (args[i] == '('){
-                brackets.push();
-
+                for (int k=1; args[i+k] != ')'; k++){
+                    String [] brackets = args[i+k];
+                }
+                math(brackets);
             } 
         }
 
     }
 
-    public static void exponent(Stack args) {
+    public static String exponent(String[] args) {
+        for (int i = 0; i < args.length; i++) {
+            if (args[i] == '^'){
+                double base =  Double.parseDouble(args[i-1]);
+                double exponent =  Double.parseDouble(args[i+1]);
+                double value = Math.pow(base, exponent);
+
+                //String [] exponential = 
+            }
+        }
+    }
+
+    public static String divide(String[] args) {
 
     }
 
-    public static void divide(Stack args) {
+    public static String multiply(String[] args) {
 
     }
 
-    public static void multiply(Stack args) {
+    public static String add(String[] args) {
 
     }
 
-    public static void add(Stack args) {
-
-    }
-
-    public static void subtract(Stack args) {
+    public static String subtract(String[] args) {
 
     }
 
