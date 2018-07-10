@@ -74,16 +74,26 @@ public class Ordered_Calculator {
             if(args.contains(")")){
                 int index2 = args.indexOf(")");
                 ArrayList<String> brackets = new ArrayList<>(args.subList(index1+1, index2));
-                System.out.print(brackets + "\n");
                 flag = 1;
                 //args.add(Integer.toString(index1));
                 //args.add(Integer.toString(index2));
 
                 ArrayList<String> output = math(brackets);
                 
-                for (int i = index1; i <= index2; i++){
-                    args.remove(0);
+                Iterator<String> itr = args.iterator();
+
+                int i = 0;
+            
+                while(itr.hasNext() && i<(index2-index1+1)){
+                    String remove = itr.next();
+
+                    if (remove == args.get(index1)){
+                        itr.remove();
+                        i++;
+                    }
+
                 }
+
                 args.addAll(index1, output);
                 
                 return args;                           
